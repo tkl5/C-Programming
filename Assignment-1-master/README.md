@@ -1,5 +1,6 @@
 # Assignment-1
 Assignment 1 for TCSS 333
+
 Tim Liu
 
 Link for sort1: 
@@ -15,6 +16,7 @@ The gnome sort works similarly to insertion sort, except that moving an element 
 Bubble sort works by comparing each pair of adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed.
 
 Compilation times:
+
 Insertion sort took 7410 ms
 sort1 took 12889 ms
 sort2 took 45054 ms
