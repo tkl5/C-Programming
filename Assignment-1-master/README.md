@@ -20,7 +20,5 @@ Bubble sort works by comparing each pair of adjacent elements and swaps them if 
 Compilation times:
 
 Insertion sort took 7410 ms
-
 sort1 took 12889 ms
-
 sort2 took 45054 ms
