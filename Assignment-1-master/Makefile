@@ -16,7 +16,7 @@ main.o: main.c
 	$(CC) -c $(CFLAGS) main.c	
 	 
 insertionSort.o: insertionSort c
-	$(CC) $(CFLAGS) -c insertoinSort.c
+	$(CC) $(CFLAGS) -c insertionSort.c
 	
 sort1.o: sort1.c
 	$(CC) $(CFLAGS) -c sort1.c
