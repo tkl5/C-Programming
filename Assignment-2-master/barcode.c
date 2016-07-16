@@ -45,7 +45,6 @@ int main_barcode(int argc, char *argv[]){
 	inputfp2 = fopen("test_R2.fastq", "r");
 	outputfp = fopen("correct_output.txt", "w");
 
-
 	int lineCounter1 = 0;
 	while (fgets(line1, sizeof(line1), inputfp1) != NULL) {
 		lineCounter1++;
@@ -53,9 +52,7 @@ int main_barcode(int argc, char *argv[]){
 		len = strlen(BARCODE_LENGTH);
 		if ((lineCounter1 % 4) == 1) {
 			fprintf("%*.*s", len, len, line1);
-			strncpy(outputfp, line1, len);
 		}
-
 	}
 
 	int lineCounter2 = 0;
@@ -64,11 +61,7 @@ int main_barcode(int argc, char *argv[]){
 		fprintf(outputfp, line2);
 		if (lineCounter2 % 4 == 0) {
 			fprintf(outputfp, ":"+line1);
-		} else if ((lineCounter1 % 4) == 1) {
-
-		}
-
-
+		} 
 	}
 
 
