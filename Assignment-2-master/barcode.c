@@ -41,29 +41,33 @@ int main_barcode(int argc, char *argv[]){
 	//**********************************************************************
 	//open the files
 	//use fopen to open streams to the two input files and the output file if one is given
+	char tempString[512];
 	inputfp1 = fopen("test_R1.fastq", "r");
 	inputfp2 = fopen("test_R2.fastq", "r");
 	outputfp = fopen("correct_output.txt", "w");
 
-	int lineCounter1 = 0;
-	while (fgets(line1, sizeof(line1), inputfp1) != NULL) {
-		lineCounter1++;
-		int len;
-		len = strlen(BARCODE_LENGTH);
-		if ((lineCounter1 % 4) == 1) {
-			fprintf("%*.*s", len, len, line1);
+	int lineCounter = 0;
+	while (!feof(inputfp1) && !feof(inputfp2)) {
+		fgets(line1, sizeof(line1), inputfp2);
+		fgets(line2, sizeof(line2), inputfp1);
+
+		if ((lineCounter % 4) == 1) {
+			strcpy(tempString, line1);
+		 	tempString[strlen(line1) - 1] = '\0';
+		 	strncat(tempString, ":", 1);
+		
+			
+		} else if (lineCounter % 4 == 2) {
+		   strncat(tempString,line2,16);
+		   strcat(tempString, "\n");
+		   fputs(tempString,outputfp);
+		   fputs(tempString,outputfp);
+	
+		} else {
+			fputs(line1, outputfp);	
 		}
+		currentLine++;
 	}
-
-	int lineCounter2 = 0;
-	while (fgets(line2, sizeof(line2), inputfp2) != NULL) {
-		lineCounter2++;
-		fprintf(outputfp, line2);
-		if (lineCounter2 % 4 == 0) {
-			fprintf(outputfp, ":"+line1);
-		} 
-	}
-
 
 	//check that the open is successful	(i.e. that the file pointers are not 0)
 	if (inputfp1 == NULL) {
