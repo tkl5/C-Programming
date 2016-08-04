@@ -8,12 +8,12 @@ int main() {
 	char *c = "World";
 	char *d;
 	char *file1 = "e.bin";
-//	char *file2 = "e.txt";
+	char *file2 = "e.txt";
 	int size;
-//	int sizes[2];
+	int sizes[2];
 	int e[4][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
-//	int **f;
-//	int **g;
+	int **f;
+	int **g;
 
 	//*******************************************************
 	//1 mark
@@ -113,6 +113,24 @@ int main() {
 	//in main free the memory for f
 	//in main free the memory for g
 	//*******************************************************
+	void arrayCopy(int *e[][3], int ***f, int ***g, int sizes) {
+		f = (int**) malloc(sizes * sizeof(e));
+		g = (int**) malloc(sizeof(e));
+		int i, j;
+
+		for (i = 0; i < sizes; i++) {
+			for (j = 0; j < 3; j++) {
+				f = e[i][j];
+				g = e[i][j];
+				printf("%d\n", f);
+				printf("%d\n", g);
+
+			}
+		}
+	}
+	arrayCopy(*e, **f, **g, 4);
+	free(f);
+	free(g);
 
 	return 1;
 }
