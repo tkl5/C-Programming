@@ -114,9 +114,13 @@ int main() {
 	//in main free the memory for g
 	//*******************************************************
 	void arrayCopy(int *e[][3], int ***f, int ***g, int sizes) {
-		f = (int**) malloc(sizes * sizeof(e));
-		g = (int**) malloc(sizeof(e));
 		int i, j;
+		**f = malloc(3*sizeof(e));
+		**g = malloc(3*sizeof(e));
+		for (i = 0; i < 3; i++) {		
+			f[i] = (int**) malloc(sizes * sizeof(e));
+			g[i] = (int**) malloc(sizes * sizeof(e));
+		}
 
 		for (i = 0; i < sizes; i++) {
 			for (j = 0; j < 3; j++) {
@@ -124,11 +128,12 @@ int main() {
 				g = e[i][j];
 				printf("%d\n", f);
 				printf("%d\n", g);
-
 			}
 		}
 	}
-	arrayCopy(*e, **f, **g, 4);
+	arrayCopy(e, **f, **g, (int) sizes);
+	printf("%d %d %d\n", (int) e, (int) f, (int) g);
+
 	free(f);
 	free(g);
 
