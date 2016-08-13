@@ -33,7 +33,10 @@ int main(int argc, char *argv[]){
 				fprintf(stderr,"pngPlay -g -r degrees -i inputfile -o outputfile  ");
 				exit(0);
 			}	
-		}		
+		}
+  
+  BMP16_map *map = BMP16_map_init(p ->height, p->width ,0, 5, 6, 5);
+
   pixMap *p=pixMap_init_filename(inputfile);
   if(degrees)pixMap_rotate(p,degrees);
   if(grayFlag)pixMap_gray(p);
