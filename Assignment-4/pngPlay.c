@@ -19,9 +19,15 @@ int main(int argc, char *argv[]){
 				inputfile=argv[i+1];
 				i+=2;
 			}	
-	  else if(strcmp(argv[i],"-o")==0){
+	  		else if(strcmp(argv[i],"-o")==0){
 				outputfile=argv[i+1];
-			 i+=2;
+			 	i+=2;
+			}
+			else if(strcmp(argv[i], "-b") ==0) {
+				
+			} 
+			else if (strcmp(argv[i], "-s") ==0) {
+				
 			}
 			else{
 				fprintf(stderr,"pngPlay -g -r degrees -i inputfile -o outputfile  ");
